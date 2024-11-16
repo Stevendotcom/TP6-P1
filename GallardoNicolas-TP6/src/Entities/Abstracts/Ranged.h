@@ -1,18 +1,23 @@
 #pragma once
 #include "Soldier.h"
-class Ranged : public Soldier {
+
+namespace game::Entities::Abstracts {
+class Ranged abstract : public Soldier {
 public:
-  Ranged(float Min,
-         float Max,
+  Ranged(float MinDistance,
+         float MaxDistance,
          float Life,
          float Stamina,
          float Armor,
          float Damage,
-         Vector2D Position);
+         float MaxStamina);
+
   ~Ranged() override;
-  bool IsInRange(const Soldier* Target) const override;
+
+  bool IsInRange(int TargetPos) override;
 
 protected:
   float f_MinDistance;
   float f_MaxDistance;
 };
+}
